@@ -85,7 +85,7 @@ class AddressBook(UserDict):
         # Add the contact
         self.data[str(contact.name)] = contact
 
-    def delete(self, name: str) -> None:
+    def delete_record(self, name: str) -> None:
         """ Remove the contact record, or raise the contact not found exception
 
         :param name: contact name (string, mandatory)
@@ -115,14 +115,17 @@ class AddressBook(UserDict):
                 yield UpcomingBirthday(contact, congratulation_date)
 
     def upcoming_birthdays_by_days(self) -> dict[datetime.date, list[Record]]:
-        """Return all contacts whose birthday is within the next period, grouped by date, including today,
+        """Return all contacts whose birthday is within the next period, including today, grouped by date,
         along with the congratulation date. If the birthday falls on a weekend, the congratulation date
         is moved to the following Monday.
 
         :return: contacts whose birthday is within the next period, grouped by date (dictionary)
         """
 
+        # Collect contacts whose birthday is within the next period with the congratulation date
         upcoming_birthdays: dict[datetime.date, list[Record]] = defaultdict(list)
         for record, congratulation_date in self.upcoming_birthdays():
             upcoming_birthdays[congratulation_date].append(record)
-        return upcoming_birthdays
+
+        # Sort and return contacts birthdays by date
+        return dict(sorted(upcoming_birthdays.items()))

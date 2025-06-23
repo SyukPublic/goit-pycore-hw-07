@@ -340,9 +340,12 @@ class Record:
 
         :return: readable string (string)
         """
-        return "Contact name: {name}, birthday: {birthday}, phones: {phones}, emails: {emails}".format(
-            name=str(self.name),
-            birthday=str(self.birthday) if self.birthday is not None else "-",
-            phones="; ".join(str(p) for p in self.phones),
-            emails="; ".join(str(p) for p in self.emails),
-        )
+
+        readable_string: str = f"Contact name: {str(self.name)}"
+        if self.birthday is not None:
+            readable_string += f", birthday: {str(self.birthday)}"
+        if self.phones:
+            readable_string += ", phones: {phones}".format(phones="; ".join(str(p) for p in self.phones))
+        if self.emails:
+            readable_string += ", emails: {emails}".format(emails="; ".join(str(p) for p in self.emails))
+        return readable_string

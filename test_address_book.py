@@ -32,7 +32,7 @@ def main():
         book.add_record(jane_record)
 
         # Print all records in the address book
-        for name, record in book.data.items():
+        for name, record in book.items():
             print(record)
 
     except Exception as e:
@@ -48,6 +48,12 @@ def main():
         john.edit_email("john@test.com", "john.john@test.com")
         # Print John's record
         print(john)
+        # Print John's phones
+        print("John's phones:")
+        print("\n".join([str(phone) for phone in john.phones]))
+        # Print John's emails
+        print("John's emails:")
+        print("\n".join([str(email) for email in john.emails]))
 
         # Find the specific phone number in John's record
         found_phone = john.find_phone("5555555555")
@@ -67,10 +73,10 @@ def main():
         print("#" * 20, "  Test 3  ", "#" * 20)
 
         # Delete Jane's record
-        book.delete("Jane")
+        book.delete_record("Jane")
 
         # Print all records in the address book
-        for name, record in book.data.items():
+        for name, record in book.items():
             print(record)
 
     except Exception as e:
@@ -90,7 +96,7 @@ def main():
         )
 
         # Print all records in the address book
-        for name, record in book.data.items():
+        for name, record in book.items():
             print(record)
 
     except Exception as e:
@@ -112,7 +118,7 @@ def main():
         )
 
         # Print all records in the address book
-        for name, record in book.data.items():
+        for name, record in book.items():
             print(record)
 
     except Exception as e:
@@ -130,14 +136,14 @@ def main():
                 phones=["1111111111", "2222222222", "1111111111"],
                 emails=["jane@test.com", "jane@test.com", "jane.jane@test.com"],
             ),
-            Record("John 0", birthday="22.06.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 1", birthday="23.06.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 2", birthday="29.06.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 3", birthday="30.06.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 4", birthday="01.07.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 5", birthday="02.07.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 6", birthday="03.07.2002", phones=["1234567890"], emails=["john@test.com"]),
-            Record("John 7", birthday="04.07.2002", phones=["1234567890"], emails=["john@test.com"]),
+            Record("John 0", birthday="22.06.2002", phones=["1234567890"]),
+            Record("John 1", birthday="23.06.2002", phones=["1234567890"]),
+            Record("John 2", birthday="29.06.2002", phones=["1234567890"]),
+            Record("John 3", birthday="30.06.2002", phones=["1234567890"]),
+            Record("John 4", birthday="01.07.2002", emails=["john@test.com"]),
+            Record("John 5", birthday="02.07.2002", emails=["john@test.com"]),
+            Record("John 6", birthday="03.07.2002", emails=["john@test.com"]),
+            Record("John 7", birthday="04.07.2002", emails=["john@test.com"]),
             # congratulation_range_days=10,
         )
 

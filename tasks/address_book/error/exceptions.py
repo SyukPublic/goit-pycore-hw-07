@@ -5,17 +5,17 @@ Exceptions for address book implementation
 """
 
 
-class ObjectNotFound(Exception):
+class ObjectNotFound(KeyError):
     def __init__(self, message):
         super().__init__(message)
 
 
-class ObjectAlreadyExist(Exception):
+class ObjectAlreadyExist(KeyError):
     def __init__(self, message):
         super().__init__(message)
 
 
-class ObjectValueError(Exception):
+class ObjectValueError(ValueError):
     def __init__(self, message):
         super().__init__(message)
 
